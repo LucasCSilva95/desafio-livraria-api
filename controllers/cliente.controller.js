@@ -57,9 +57,19 @@ async function updateCliente(req, res, next) {
   }
 }
 
+async function deleteCliente(req, res, next) {
+  try {
+    await ClienteService.deleteCliente(req.params.id);
+    res.end();
+  } catch (error) {
+    next(error);
+  }
+}
+
 export default {
   createCliente,
   getClientes,
   getClienteById,
   updateCliente,
+  deleteCliente,
 };

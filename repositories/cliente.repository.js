@@ -44,9 +44,22 @@ async function updateCliente(cliente) {
   }
 }
 
+async function deleteCliente(id) {
+  try {
+    await ClienteModel.destroy({
+      where: {
+        clienteId: id,
+      },
+    });
+  } catch (error) {
+    throw error;
+  }
+}
+
 export default {
   insertCliente,
   getClientes,
   getClienteById,
   updateCliente,
+  deleteCliente,
 };
