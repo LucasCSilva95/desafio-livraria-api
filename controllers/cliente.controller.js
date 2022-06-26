@@ -20,6 +20,28 @@ async function createCliente(req, res, next) {
   }
 }
 
+async function updateCliente(req, res, next) {
+  try {
+    let cliente = req.body;
+    if (
+      !cliente.clienteId ||
+      !cliente.nome ||
+      !cliente.email ||
+      !cliente.senha ||
+      !cliente.telefone ||
+      !cliente.endereco
+    ) {
+      throw new Error(
+        "Cliente ID, Nome, E-mail, Senha, Telefône e Endereço são obrigatórios."
+      );
+    }
+    res.send(await ClienteService.updateCliente(cliente));
+  } catch (error) {
+    next(error);
+  }
+}
+
 export default {
   createCliente,
+  updateCliente,
 };

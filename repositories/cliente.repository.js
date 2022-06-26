@@ -8,6 +8,19 @@ async function insertCliente(cliente) {
   }
 }
 
+async function updateCliente(cliente) {
+  try {
+    await ClienteModel.update(cliente, {
+      where: {
+        clienteId: cliente.clienteId,
+      },
+    });
+  } catch (error) {
+    throw error;
+  }
+}
+
 export default {
   insertCliente,
+  updateCliente,
 };
