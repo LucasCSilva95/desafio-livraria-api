@@ -8,6 +8,14 @@ async function insertCliente(cliente) {
   }
 }
 
+async function getClientes() {
+  try {
+    return await ClienteModel.findAll();
+  } catch (error) {
+    throw error;
+  }
+}
+
 async function updateCliente(cliente) {
   try {
     await ClienteModel.update(cliente, {
@@ -22,5 +30,6 @@ async function updateCliente(cliente) {
 
 export default {
   insertCliente,
+  getClientes,
   updateCliente,
 };

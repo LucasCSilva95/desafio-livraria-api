@@ -4,11 +4,16 @@ async function createCliente(cliente) {
   return await ClienteRepository.insertCliente(cliente);
 }
 
+async function getClientes() {
+  return await ClienteRepository.getClientes();
+}
+
 async function updateCliente(cliente) {
   return await ClienteRepository.updateCliente(cliente);
 }
 
 export default {
   createCliente,
+  getClientes,
   updateCliente,
 };

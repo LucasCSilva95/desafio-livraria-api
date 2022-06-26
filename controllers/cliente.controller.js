@@ -20,6 +20,14 @@ async function createCliente(req, res, next) {
   }
 }
 
+async function getClientes(req, res, next) {
+  try {
+    res.send(await ClienteService.getClientes());
+  } catch (error) {
+    next(error);
+  }
+}
+
 async function updateCliente(req, res, next) {
   try {
     let cliente = req.body;
@@ -43,5 +51,6 @@ async function updateCliente(req, res, next) {
 
 export default {
   createCliente,
+  getClientes,
   updateCliente,
 };
