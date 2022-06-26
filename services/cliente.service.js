@@ -8,6 +8,10 @@ async function getClientes() {
   return await ClienteRepository.getClientes();
 }
 
+async function getClienteById(id) {
+  return await ClienteRepository.getClienteById(id);
+}
+
 async function updateCliente(cliente) {
   return await ClienteRepository.updateCliente(cliente);
 }
@@ -15,5 +19,6 @@ async function updateCliente(cliente) {
 export default {
   createCliente,
   getClientes,
+  getClienteById,
   updateCliente,
 };

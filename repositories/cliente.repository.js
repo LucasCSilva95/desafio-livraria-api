@@ -16,6 +16,14 @@ async function getClientes() {
   }
 }
 
+async function getClienteById(id) {
+  try {
+    return await ClienteModel.findByPk(id);
+  } catch (error) {
+    throw error;
+  }
+}
+
 async function updateCliente(cliente) {
   try {
     await ClienteModel.update(cliente, {
@@ -31,5 +39,6 @@ async function updateCliente(cliente) {
 export default {
   insertCliente,
   getClientes,
+  getClienteById,
   updateCliente,
 };
