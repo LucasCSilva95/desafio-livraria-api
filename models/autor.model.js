@@ -1,7 +1,7 @@
 import Sequelize from "sequelize";
 import db from "../repositories/db.js";
 
-const Clientes = db.define(
+const Autor = db.define(
   "autores",
   {
     autorId: {
@@ -26,4 +26,4 @@ const Clientes = db.define(
   { underscored: true }
 );
 
-export default Clientes;
+export default Autor;
