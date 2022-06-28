@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import "dotenv/config";
 import ClienteRouter from "./routes/cliente.route.js";
 import AutorRouter from "./routes/autor.route.js";
 import LivroRouter from "./routes/livro.route.js";
@@ -17,4 +18,4 @@ app.use((error, req, res, next) => {
   res.status(400).send({ error: error.message });
 });
 
-app.listen(3000, () => console.log("API Started!"));
+app.listen(process.env.API_PORT, () => console.log("API Started!"));
