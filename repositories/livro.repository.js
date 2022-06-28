@@ -48,10 +48,23 @@ async function deleteLivro(id) {
   }
 }
 
+async function decrementaEstoqueLivro(id) {
+  try {
+    await LivroModel.decrement(["estoque"], {
+      where: {
+        livroId: id,
+      },
+    });
+  } catch (error) {
+    throw error;
+  }
+}
+
 export default {
   insertLivro,
   getLivros,
   getLivroById,
   updateLivro,
   deleteLivro,
+  decrementaEstoqueLivro,
 };
