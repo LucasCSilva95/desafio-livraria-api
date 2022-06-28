@@ -13,7 +13,8 @@ async function getClienteById(id) {
 }
 
 async function updateCliente(cliente) {
-  return await ClienteRepository.updateCliente(cliente);
+  await ClienteRepository.updateCliente(cliente);
+  return await ClienteRepository.getClienteById(cliente.clienteId);
 }
 
 async function deleteCliente(id) {

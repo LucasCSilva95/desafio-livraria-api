@@ -13,7 +13,8 @@ async function getAutorById(id) {
 }
 
 async function updateAutor(autor) {
-  return await AutorRepository.updateAutor(autor);
+  await AutorRepository.updateAutor(autor);
+  return await AutorRepository.getAutorById(autor.autorId);
 }
 
 async function deleteAutor(id) {

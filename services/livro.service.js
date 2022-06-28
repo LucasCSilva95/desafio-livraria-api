@@ -13,7 +13,8 @@ async function getLivroById(id) {
 }
 
 async function updateLivro(livro) {
-  return await LivroRepository.updateLivro(livro);
+  await LivroRepository.updateLivro(livro);
+  return LivroRepository.getLivroById(livro.livroId);
 }
 
 async function deleteLivro(id) {
