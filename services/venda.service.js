@@ -32,18 +32,8 @@ async function getVendaById(id) {
   return await VendaRepository.getVendaById(id);
 }
 
-async function updateVenda(venda) {
-  return await VendaRepository.updateVenda(venda);
-}
-
-async function deleteVenda(id) {
-  return await VendaRepository.deleteVenda(id);
-}
-
 export default {
   createVenda,
   getVendas,
   getVendaById,
-  updateVenda,
-  deleteVenda,
 };

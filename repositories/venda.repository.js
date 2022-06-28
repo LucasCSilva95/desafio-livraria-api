@@ -56,30 +56,6 @@ async function getVendaById(id) {
   }
 }
 
-async function updateVenda(venda) {
-  try {
-    await VendaModel.update(venda, {
-      where: {
-        vendaId: venda.vendaId,
-      },
-    });
-  } catch (error) {
-    throw error;
-  }
-}
-
-async function deleteVenda(id) {
-  try {
-    await VendaModel.destroy({
-      where: {
-        vendaId: id,
-      },
-    });
-  } catch (error) {
-    throw error;
-  }
-}
-
 async function getVendasByClienteId(clienteId) {
   try {
     return await VendaModel.findAll({
@@ -168,8 +144,6 @@ export default {
   insertVenda,
   getVendas,
   getVendaById,
-  updateVenda,
-  deleteVenda,
   getVendasByClienteId,
   getVendasByLivroId,
   getVendasByAutorId,
