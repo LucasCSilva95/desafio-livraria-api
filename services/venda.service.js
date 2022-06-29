@@ -16,14 +16,14 @@ async function createVenda(venda) {
 }
 
 async function getVendas(query) {
-  if (query.cliente_id)
-    return await VendaRepository.getVendasByClienteId(query.cliente_id);
+  if (query.clienteId)
+    return await VendaRepository.getVendasByClienteId(query.clienteId);
 
-  if (query.livro_id)
-    return await VendaRepository.getVendasByLivroId(query.livro_id);
+  if (query.livroId)
+    return await VendaRepository.getVendasByLivroId(query.livroId);
 
-  if (query.autor_id)
-    return await VendaRepository.getVendasByAutorId(query.autor_id);
+  if (query.autorId)
+    return await VendaRepository.getVendasByAutorId(query.autorId);
 
   return await VendaRepository.getVendas();
 }
