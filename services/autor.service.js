@@ -1,4 +1,5 @@
 import AutorRepository from "../repositories/autor.repository.js";
+import LivroRepository from "../repositories/livro.repository.js";
 
 async function createAutor(autor) {
   return await AutorRepository.insertAutor(autor);
@@ -18,6 +19,12 @@ async function updateAutor(autor) {
 }
 
 async function deleteAutor(id) {
+  const livroAutor = await LivroRepository.getLivrosByAutorId(id);
+  if (livroAutor.length > 0)
+    throw new Error(
+      "Operação negada! Exite(m) livro(s) cadastrado(s) para este Autor."
+    );
+
   return await AutorRepository.deleteAutor(id);
 }
 
