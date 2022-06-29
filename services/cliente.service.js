@@ -1,4 +1,5 @@
 import ClienteRepository from "../repositories/cliente.repository.js";
+import VendaRepository from "../repositories/venda.repository.js";
 
 async function createCliente(cliente) {
   return await ClienteRepository.insertCliente(cliente);
@@ -18,6 +19,10 @@ async function updateCliente(cliente) {
 }
 
 async function deleteCliente(id) {
+  const vendaCliente = await VendaRepository.getVendasByClienteId(id);
+  if (vendaCliente.length > 0)
+    throw new Error("Operação negada! Existe(m) venda(s) para este cliente.");
+
   return await ClienteRepository.deleteCliente(id);
 }
 
