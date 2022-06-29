@@ -1,4 +1,5 @@
 import LivroRepository from "../repositories/livro.repository.js";
+import VendaRepository from "../repositories/venda.repository.js";
 
 async function createLivro(livro) {
   return await LivroRepository.insertLivro(livro);
@@ -18,6 +19,12 @@ async function updateLivro(livro) {
 }
 
 async function deleteLivro(id) {
+  const vendaLivro = await VendaRepository.getVendasByLivroId(id);
+  if (vendaLivro.length > 0)
+    throw new Error(
+      "Operação negada! Exite(m) venda(s) cadastrada(s) para este Livro."
+    );
+
   return await LivroRepository.deleteLivro(id);
 }
 
