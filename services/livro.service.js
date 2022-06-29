@@ -5,7 +5,9 @@ async function createLivro(livro) {
   return await LivroRepository.insertLivro(livro);
 }
 
-async function getLivros() {
+async function getLivros(autorId) {
+  if (autorId) return await LivroRepository.getLivrosByAutorId(autorId);
+
   return await LivroRepository.getLivros();
 }
 
