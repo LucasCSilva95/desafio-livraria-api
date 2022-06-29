@@ -11,7 +11,13 @@ async function insertLivro(livro) {
 
 async function getLivros() {
   try {
-    return await LivroModel.findAll();
+    return await LivroModel.findAll({
+      include: [
+        {
+          model: AutorModel,
+        },
+      ],
+    });
   } catch (error) {
     throw error;
   }
@@ -19,7 +25,13 @@ async function getLivros() {
 
 async function getLivroById(id) {
   try {
-    return await LivroModel.findByPk(id);
+    return await LivroModel.findByPk(id, {
+      include: [
+        {
+          model: AutorModel,
+        },
+      ],
+    });
   } catch (error) {
     throw error;
   }
