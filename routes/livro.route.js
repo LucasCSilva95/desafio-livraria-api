@@ -1,5 +1,6 @@
 import express from "express";
 import LivroController from "../controllers/livro.controller.js";
+import InfoController from "../controllers/info.controller.js";
 
 const router = express.Router();
 
@@ -8,5 +9,8 @@ router.get("/", LivroController.getLivros);
 router.get("/:id", LivroController.getLivroById);
 router.put("/", LivroController.updateLivro);
 router.delete("/:id", LivroController.deleteLivro);
+router.post("/info", InfoController.createInfo);
+router.put("/info", InfoController.updateInfo);
+router.delete("/info/:id", InfoController.deleteInfo);
 
 export default router;
