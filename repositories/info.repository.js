@@ -36,7 +36,6 @@ async function updateInfo(info) {
 
 async function deleteInfo(livroId) {
   const client = getClient();
-  console.log("teste", livroId);
   try {
     await client.connect();
     return await client
@@ -50,8 +49,24 @@ async function deleteInfo(livroId) {
   }
 }
 
+async function getInfoByLivroId(livroId) {
+  const client = getClient();
+  try {
+    await client.connect();
+    return await client
+      .db(mongoDBDatabase)
+      .collection(mongoDBCollection)
+      .findOne({ livroId });
+  } catch (error) {
+    throw error;
+  } finally {
+    await client.close();
+  }
+}
+
 export default {
   insertInfo,
   updateInfo,
   deleteInfo,
+  getInfoByLivroId,
 };
