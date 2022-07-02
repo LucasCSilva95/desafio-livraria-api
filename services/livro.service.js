@@ -1,5 +1,6 @@
 import LivroRepository from "../repositories/livro.repository.js";
 import VendaRepository from "../repositories/venda.repository.js";
+import InfoRepository from "../repositories/info.repository.js";
 
 async function createLivro(livro) {
   return await LivroRepository.insertLivro(livro);
@@ -12,7 +13,10 @@ async function getLivros(autorId) {
 }
 
 async function getLivroById(id) {
-  return await LivroRepository.getLivroById(id);
+  const livro = await LivroRepository.getLivroById(id);
+  const livroInfo = await InfoRepository.getInfoByLivroId(id);
+  livro.setDataValue("info", livroInfo);
+  return livro;
 }
 
 async function updateLivro(livro) {

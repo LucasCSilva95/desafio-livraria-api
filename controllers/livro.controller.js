@@ -22,7 +22,7 @@ async function getLivros(req, res, next) {
 
 async function getLivroById(req, res, next) {
   try {
-    res.send(await LivroService.getLivroById(req.params.id));
+    res.send(await LivroService.getLivroById(parseInt(req.params.id)));
   } catch (error) {
     next(error);
   }
