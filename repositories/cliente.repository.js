@@ -32,6 +32,14 @@ async function getClienteById(id) {
   }
 }
 
+async function getClienteByEmail(email) {
+  try {
+    return await ClienteModel.findOne({ where: { email }, raw: true });
+  } catch (error) {
+    throw error;
+  }
+}
+
 async function updateCliente(cliente) {
   try {
     await ClienteModel.update(cliente, {
@@ -60,6 +68,7 @@ export default {
   insertCliente,
   getClientes,
   getClienteById,
+  getClienteByEmail,
   updateCliente,
   deleteCliente,
 };

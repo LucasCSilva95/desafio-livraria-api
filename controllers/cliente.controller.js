@@ -1,4 +1,5 @@
 import ClienteService from "../services/cliente.service.js";
+import { getRole } from "./auth.controller.js";
 
 async function createCliente(req, res, next) {
   try {
@@ -50,6 +51,13 @@ async function updateCliente(req, res, next) {
       throw new Error(
         "Cliente ID, Nome, E-mail, Senha, Telefône e Endereço são obrigatórios."
       );
+    }
+    if (getRole(req.auth.user) === "cliente") {
+      const cli = await ClienteService.getClienteByEmail(req.auth.user);
+      if (!cli) throw new Error("Usuário não encontrado na base de dados.");
+
+      if (parseInt(cli.clienteId) !== cliente.clienteId)
+        throw new Error("Cliente não pode atualizar dados de outro cliente.");
     }
     res.send(await ClienteService.updateCliente(cliente));
   } catch (error) {
